@@ -108,7 +108,7 @@ function Help(props) {
 
       const result = res.filter((user) => user.id == userId);
 
-      // commit and push
+      // commit and pus
       console.log(result);
 
       // change to result[0].phone
