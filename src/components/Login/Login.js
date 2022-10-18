@@ -5,10 +5,10 @@ import clientConfig from "../../client-config";
 import "./Login.css";
 import Modal from "react-modal";
 
-import LogoLogin from "../../images/logoLogin.png";
+// import LogoLogin from "../../images/logoLogin.png";
 import { FaRegUser } from "react-icons/fa";
 import { RiKey2Line } from "react-icons/ri";
-import { AiFillCloseCircle } from "react-icons/ai";
+// import { AiFillCloseCircle } from "react-icons/ai";
 
 import wpConfig from "../../wp-config";
 //redux
@@ -160,7 +160,7 @@ class Login extends React.Component {
             />
           )}
           <div className="logo">
-            <img alt={"login logo"} src={LogoLogin} />
+            {/* <img alt={"login logo"} src={LogoLogin} /> */}
           </div>
           <form onSubmit={this.onFormSubmit}>
             <label className="form-group">
@@ -211,7 +211,7 @@ class Login extends React.Component {
             style={this.styles.modalStyle}
           >
             <div className="popup">
-              <AiFillCloseCircle id="x" onClick={this.toggleModal} />
+              {/* <AiFillCloseCircle id="x" onClick={this.toggleModal} /> */}
               <div className="ModalMessage">
                 <h2>לשחזור סיסמה נא ליצור קשר עם 054-464-3843</h2>
               </div>
