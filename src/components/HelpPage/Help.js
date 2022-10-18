@@ -203,7 +203,7 @@ function Help(props) {
                   href={
                     phoneGuide !== ""
                       ? "https://wa.me/" +
-                        "+972502333550" +
+                        phoneGuide +
                         "?text=" +
                         "התקשיתי במילוי המשימות שלי. אשמח לסיוע ותודה על הרצון לעזור" +
                         "&amp;app_absent=0"
