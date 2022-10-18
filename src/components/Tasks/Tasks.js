@@ -122,7 +122,7 @@ function Tasks(props) {
     setStationsData(stations);
 
     // on unmount
-    return () => {};
+    return () => { };
   }, []);
   /*
         BreakPoints will determine the behavior of our scroll bar according to the size

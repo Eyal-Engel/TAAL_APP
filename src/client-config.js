@@ -1,5 +1,5 @@
 const clientConfig = {
-  siteUrl: "https://s83.bfa.myftpupload.com/",
+	siteUrl: "https://taal.tech/",
 };
 
 export default clientConfig;
@@ -7,3 +7,4 @@ export default clientConfig;
 // module.exports = {
 // 	baseUrl: "https://s83.bfa.myftpupload.com/";
 // }
+//'https://taal.tech'
