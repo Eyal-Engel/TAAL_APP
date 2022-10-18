@@ -4,7 +4,7 @@ import Home_Ic from "./icons/Home_Ic.svg";
 import arrow_Ic from "./icons/arrow_Ic.svg";
 import backIcon from "./icons/backArrow_Ic.svg";
 import Ic_stress from "./icons/Ic_stress.svg";
-import Ic_stress_grey from "./icons/Ic_stress_grey.svg";
+// import Ic_stress_grey from "./icons/Ic_stress_grey.svg";
 import styled from "styled-components";
 
 export const LogoModal = (props) => (
@@ -63,8 +63,8 @@ export const StressIconRed = (props) => (
 export const StressIconGrey = (props) => (
   <div>
     <img
-      alt={"Stress Grey"}
-      src={Ic_stress_grey}
+      alt={"Stress Red"}
+      src={Ic_stress}
       width={props.width ? props.width : 25}
       height={props.width ? props.width : 25}
     />
