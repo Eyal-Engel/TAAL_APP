@@ -106,7 +106,6 @@ function Help(props) {
       console.log(user.user.id);
       const userId = user.user.id;
 
-      // change "17" to userId
       const result = res.filter((user) => user.id == userId);
 
       console.log(result);
