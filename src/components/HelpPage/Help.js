@@ -27,6 +27,8 @@ function Help(props) {
     site: "",
   });
 
+  console.log("len: " + user_places.user_places.length);
+  console.log("task_location: " + user_tasks.task_location);
   console.log("user_places: " + user_places.user_places);
   console.log("username hebrew" + user.user.hebrewName);
   console.log("current task: " + currentTaskName);
@@ -63,11 +65,19 @@ function Help(props) {
         site: "סיימת את כל המשימות במסלול שלך להיום",
       });
     } else {
-      setState({
-        ...state,
-        action: "המיקום הבא שלי:",
-        site: user_places.user_places[user_places.places_location].name,
-      });
+      if (user_places.user_places.length === 1) {
+        setState({
+          ...state,
+          action: "המיקום הבא שלי:",
+          site: user_places.user_places[0].name,
+        });
+      } else {
+        setState({
+          ...state,
+          action: "המיקום הבא שלי:",
+          site: user_places.user_places[user_places.places_location].name,
+        });
+      }
     }
   };
   useEffect(() => {
