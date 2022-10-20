@@ -27,6 +27,10 @@ function Help(props) {
     site: "",
   });
 
+  console.log("user_places: " + user_places.user_places);
+  console.log("username hebrew" + user.user.hebrewName);
+  console.log("current task: " + currentTaskName);
+
   const [phoneGuide, setPhoneGuide] = useState("error");
 
   const { t } = useTranslation();
@@ -51,8 +55,6 @@ function Help(props) {
     ) {
       setState({
         ...state,
-        action: "המיקום הנוכחי שלי:",
-        site: user_places.user_places[user_places.places_location].name,
       });
     } else if (user_tasks.task_location === -1) {
       setState({
@@ -172,7 +174,7 @@ function Help(props) {
                           className="headText"
                           hidden={currentTaskName === ""}
                         >
-                          המשימה הבאה שלי:
+                          המשימה הנוכחית שלי:
                         </div>
                         <h2 className="secText" hidden={currentTaskName === ""}>
                           {currentTaskName}
@@ -204,8 +206,16 @@ function Help(props) {
                     phoneGuide !== ""
                       ? "https://api.whatsapp.com/send/?phone=" +
                         phoneGuide.toString() +
-                        "&text=%D7%94%D7%AA%D7%A7%D7%A9%D7%99%D7%AA%D7%99+%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99+%D7%94%D7%9E%D7%A9%D7%99%D7%9E%D7%95%D7%AA+%D7%A9%D7%9C%D7%99.+%D7%90%D7%A9%D7%9E%D7%97+%D7%9C%D7%A1%D7%99%D7%95%D7%A2+%D7%95%D7%AA%D7%95%D7%93%D7%94+%D7%A2%D7%9C+%D7%94%D7%A8%D7%A6%D7%95%D7%9F+%D7%9C%D7%A2%D7%96%D7%95%D7%A8&type=phone_number&app_absent=0"
-                      : // "https://wa.me/" +
+                        "&text=" +
+                        user.user.hebrewName.toString() +
+                        " נמצא/ת במשימה " +
+                        currentTaskName.toString() +
+                        " " +
+                        ".התקשיתי במילוי המשימות שלי. אשמח לסיוע ותודה על הרצון לעזור" +
+                        "." +
+                        "&type=phone_number&app_absent=0"
+                      : // "&text=%D7%94%D7%AA%D7%A7%D7%A9%D7%99%D7%AA%D7%99+%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99+%D7%94%D7%9E%D7%A9%D7%99%D7%9E%D7%95%D7%AA+%D7%A9%D7%9C%D7%99.+%D7%90%D7%A9%D7%9E%D7%97+%D7%9C%D7%A1%D7%99%D7%95%D7%A2+%D7%95%D7%AA%D7%95%D7%93%D7%94+%D7%A2%D7%9C+%D7%94%D7%A8%D7%A6%D7%95%D7%9F+%D7%9C%D7%A2%D7%96%D7%95%D7%A8&type=phone_number&app_absent=0"
+                        // "https://wa.me/" +
                         //   phoneGuide +
                         //   "?text=" +
                         //   "התקשיתי במילוי המשימות שלי. אשמח לסיוע ותודה על הרצון לעזור" +
