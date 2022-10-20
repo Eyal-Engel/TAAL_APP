@@ -27,6 +27,7 @@ function Help(props) {
     site: "",
   });
 
+  console.log("user_places.places_location: " + user_places.places_location);
   console.log("len: " + user_places.user_places.length);
   console.log("task_location: " + user_tasks.task_location);
   console.log("user_places: " + user_places.user_places);
@@ -68,8 +69,6 @@ function Help(props) {
       if (user_places.user_places.length === 1) {
         setState({
           ...state,
-          action: "המיקום הבא שלי:",
-          site: user_places.user_places[0].name,
         });
       } else {
         setState({
@@ -178,19 +177,14 @@ function Help(props) {
                     <div className="headText">{state.action}</div>
                     <h2 className="secText">{state.site}</h2>
 
-                    {user_places.places_location !== -1 && (
-                      <Fragment>
-                        <div
-                          className="headText"
-                          hidden={currentTaskName === ""}
-                        >
-                          המשימה הנוכחית שלי:
-                        </div>
-                        <h2 className="secText" hidden={currentTaskName === ""}>
-                          {currentTaskName}
-                        </h2>
-                      </Fragment>
-                    )}
+                    <Fragment>
+                      <div className="headText" hidden={currentTaskName === ""}>
+                        המשימה הנוכחית שלי:
+                      </div>
+                      <h2 className="secText" hidden={currentTaskName === ""}>
+                        {currentTaskName}
+                      </h2>
+                    </Fragment>
                   </div>
                   <div className="listen">
                     <AudioIcon
