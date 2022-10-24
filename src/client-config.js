@@ -4,6 +4,7 @@ const clientConfig = {
 
 export default clientConfig;
 
+// check eyal pc home
 // module.exports = {
 // 	baseUrl: "https://s83.bfa.myftpupload.com/";
 // }
