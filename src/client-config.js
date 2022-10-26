@@ -4,7 +4,6 @@ const clientConfig = {
 
 export default clientConfig;
 
-//check
 // module.exports = {
 // 	baseUrl: "https://s83.bfa.myftpupload.com/";
 // }
