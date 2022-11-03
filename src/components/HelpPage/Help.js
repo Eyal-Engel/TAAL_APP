@@ -26,6 +26,7 @@ function Help(props) {
     action: "",
     site: "",
   });
+  // const Nexmo = require("nexmo");
 
   console.log("user_places.places_location: " + user_places.places_location);
   console.log("len: " + user_places.user_places.length);
@@ -33,6 +34,39 @@ function Help(props) {
   console.log("user_places: " + user_places.user_places);
   console.log("username hebrew" + user.user.hebrewName);
   console.log("current task: " + currentTaskName);
+  console.log(document.cookie.split(";"));
+  // clear cookis
+  // document.cookie.split(";").forEach(function (c) {
+  //   document.cookie = c
+  //     .replace(/^ +/, "")
+  //     .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+  // });
+
+  // const delete_cookie = function (name) {
+  //   document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+  // };
+
+  // const clearCacheData = () => {
+  //   console.log("hello");
+  //   console.log(caches.keys());
+
+  //   caches.keys().then((names) => {
+  //     names.forEach((name) => {
+  //       console.log(name);
+  //       caches.delete(name);
+  //     });
+  //   });
+  // };
+
+  // clearCacheData();
+
+  // console.log(caches.keys());
+
+  // delete_cookie("roundcube_sessauth");
+
+  // document.cookie =
+  //   "my_cookie=; path=/; domain=localhost:8080; expires=" +
+  //   new Date(0).toUTCString();
 
   const [phoneGuide, setPhoneGuide] = useState("error");
 
@@ -132,6 +166,30 @@ function Help(props) {
     });
   };
 
+  const sendSms = () => {
+    // const Vonage = require("@vonage/server-sdk");
+    // const vonage = new Vonage({
+    //   apiKey: "2fba3b14",
+    //   apiSecret: "rtTtg9dPuI4Mtplf",
+    // });
+    // const from = "Vonage APIs";
+    // const to = "972502996949";
+    // const text = "A text message sent using the Vonage SMS API";
+    // vonage.message.sendSms(from, to, text, (err, responseData) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     if (responseData.messages[0]["status"] === "0") {
+    //       console.log("Message sent successfully.");
+    //     } else {
+    //       console.log(
+    //         `Message failed with error: ${responseData.messages[0]["error-text"]}`
+    //       );
+    //     }
+    //   }
+    // });
+  };
+
   return (
     <Fragment>
       {isLoggedIn() ? (
@@ -205,31 +263,7 @@ function Help(props) {
 
                     # const link = ('https://wa.me/' + phoneNumber + "?text=" + msg + "&amp;app_absent=0");
                     # <a href=link>{ICON גלגל הצלה}</a> */}
-                <a
-                  href={
-                    phoneGuide !== ""
-                      ? "https://api.whatsapp.com/send/?phone=" +
-                        phoneGuide.toString() +
-                        "&text=" +
-                        user.user.hebrewName.toString() +
-                        " מתקשה במילוי המשימה " +
-                        '"' +
-                        currentTaskName.toString() +
-                        '"' +
-                        "," +
-                        " " +
-                        "אשמח לסיוע ותודה על הרצון לעזור" +
-                        "." +
-                        "&type=phone_number&app_absent=0"
-                      : // "&text=%D7%94%D7%AA%D7%A7%D7%A9%D7%99%D7%AA%D7%99+%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99+%D7%94%D7%9E%D7%A9%D7%99%D7%9E%D7%95%D7%AA+%D7%A9%D7%9C%D7%99.+%D7%90%D7%A9%D7%9E%D7%97+%D7%9C%D7%A1%D7%99%D7%95%D7%A2+%D7%95%D7%AA%D7%95%D7%93%D7%94+%D7%A2%D7%9C+%D7%94%D7%A8%D7%A6%D7%95%D7%9F+%D7%9C%D7%A2%D7%96%D7%95%D7%A8&type=phone_number&app_absent=0"
-                        // "https://wa.me/" +
-                        //   phoneGuide +
-                        //   "?text=" +
-                        //   "התקשיתי במילוי המשימות שלי. אשמח לסיוע ותודה על הרצון לעזור" +
-                        //   "&amp;app_absent=0"
-                        "Error Phone doesn't exists"
-                  }
-                >
+                <a href="www.facebook.com">
                   <button className="helpNow" onClick={toggleModal}>
                     <div className="tabletButton">
                       <div className="iconD">
