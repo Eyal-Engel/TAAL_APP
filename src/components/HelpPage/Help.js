@@ -113,6 +113,7 @@ function Help(props) {
 
       //  לא רץ בגלל שיש בעיה בקריאה מה DB
       //  שרה לוי לא מופיעה ב DB
+      // 06.11.2022
 
       console.log(user.user.id);
       const userId = user.user.id;
