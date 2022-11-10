@@ -27,6 +27,8 @@ import { internetConnection } from "../functions";
 import clientConfig from "../../client-config";
 
 let placesList = [];
+let tasksList = [];
+
 let routesInfo, taskInformation;
 
 export default function Sites(props) {
@@ -162,7 +164,10 @@ export default function Sites(props) {
 
     // Update the document title using the browser API once a day
     if (user.user.lastFetchDate !== getDateInfo()) {
+      console.log("setLoading1: ", loading);
       setLoading(true);
+
+      console.log("setLoading2: ", loading);
       // get all of the places
       axios
         .get(wpConfig.getPlaces, {
@@ -177,17 +182,42 @@ export default function Sites(props) {
         .then((places_res) => {
           // setPlacesList(trasformObject(places_res.data))
           placesList = trasformObject(places_res.data);
+
           // get all of the tasks
           axios
             .get(wpConfig.getTasks, {
               params: {
-                per_page: 70,
+                per_page: 100,
                 "Cache-Control": "no-cache",
               },
             })
             .then((res) => {
-              taskInformation = trasformObject(res.data);
+              let max_pages = res.headers["x-wp-totalpages"];
+              let arrayTemp = [];
+              tasksList = res.data;
 
+              if (max_pages > 1) {
+                for (let i = 2; i <= max_pages; i++) {
+                  axios
+                    .get(wpConfig.getTasks, {
+                      params: {
+                        per_page: 100,
+                        page: i,
+                        "Cache-Control": "no-cache",
+                      },
+                    })
+                    .then((response) => {
+                      console.log("response.data: ", response.data);
+
+                      Array.prototype.push.apply(tasksList, response.data);
+                      taskInformation = trasformObject(tasksList);
+                    });
+                }
+              } else {
+                taskInformation = trasformObject(res.data);
+
+                console.log("taskInformation1: ", taskInformation);
+              }
               // Get the user's routes
               axios
                 .get(wpConfig.getRoutes, {
