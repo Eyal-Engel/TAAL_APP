@@ -39,6 +39,9 @@ export default function Sites(props) {
   const dateRef = useRef("");
   const { t } = useTranslation();
   const internetStatus = useRef(true);
+  const currDate = new Date().toLocaleDateString();
+  const currTime = new Date().toLocaleTimeString();
+
   const onchange = (scanResult) => {
     if (!(scanResult === "error")) {
       let temp = transformArrayOfObjects(props.user_places.user_places);
@@ -291,6 +294,9 @@ export default function Sites(props) {
   };
   return (
     <React.Fragment>
+      <h1>
+        current datetime: {currDate} {currTime}
+      </h1>
       {isLoggedIn() ? (
         <div className="Sites">
           <Navbar origin={"Sites"} user_data={props.user} />
