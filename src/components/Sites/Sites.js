@@ -11,6 +11,7 @@ import { navigate } from "@reach/router";
 import styled from "styled-components";
 import wpConfig from "../../wp-config";
 import Navbar from "../Nav/Navbar";
+// wp-json/wp/v2/time_data
 import {
   getPlacesList,
   getTasksList,
@@ -132,6 +133,51 @@ export default function Sites(props) {
       //  לא רץ בגלל שיש בעיה בקריאה מה DB
       //  שרה לוי לא מופיעה ב DB
     });
+
+    get(`${siteUrl}wp-json/wp/v2/time_data/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+      params: {
+        per_page: 99,
+        "Cache-Control": "no-cache",
+      },
+    }).then((res) => {
+      console.log(
+        "time_dataaaaaaaaaaaaaaaaaaaaaaaaaa[0]:",
+        res[1].title.rendered
+      );
+
+      //  לא רץ בגלל שיש בעיה בקריאה מה DB
+      //  שרה לוי לא מופיעה ב DB
+    });
+    let url_post = `${siteUrl}wp-json/wp/v2/time_data/`;
+    fetch(url_post, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("jwt")}`,
+      },
+      body: JSON.stringify({
+        // title: get_Name,
+        status: "publish",
+        title: {
+          rendered: "test3",
+        },
+
+        acf: {
+          start_time: currDate,
+
+          // my_site: obj.mySite.id,
+        },
+      }),
+    }).then(function (response) {
+      console.log(
+        "time_data responseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:",
+        response
+      );
+    });
   };
 
   // try
@@ -195,6 +241,7 @@ export default function Sites(props) {
               },
             })
             .then((res) => {
+              console.log("res:", res);
               let max_pages = res.headers["x-wp-totalpages"];
               let arrayTemp = [];
               tasksList = res.data;
@@ -214,6 +261,7 @@ export default function Sites(props) {
 
                       Array.prototype.push.apply(tasksList, response.data);
                       taskInformation = trasformObject(tasksList);
+                      console.log("taskInformation tasksList: ", tasksList);
                     });
                 }
               } else {
@@ -295,7 +343,8 @@ export default function Sites(props) {
   return (
     <React.Fragment>
       <h1>
-        current datetime: {currDate} {currTime}
+        <p>current currDate: {currDate}</p>
+        current currTime: {currTime}
       </h1>
       {isLoggedIn() ? (
         <div className="Sites">
